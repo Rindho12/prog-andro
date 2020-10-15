@@ -13,4 +13,7 @@
     <string name="login">Login</string>
     <string name="sign_in">sign in</string>
     <string name="home_activity_nich">Home Activity nich</string>
+    <string name="title_activity_home_screen">HomeScreenActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
