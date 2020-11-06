@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.ui.main.SectionsPagerAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeScreenActivity extends AppCompatActivity {
@@ -46,16 +47,6 @@ public class HomeScreenActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-
-
-        RecyclerView rvFilm = (RecyclerView) findViewById(R.id.rvFilm);
-        List<Film> filmList = null;
-        filmList.add(new Film(R.drawable.planes, "planes", "Ini adalah film planes"));
-        filmList.add(new Film(R.drawable.conjuring, "Conjuring", "Ini adalah film conjuring"));
-        filmList.add(new Film(R.drawable.thor, "Thor", "Ini adalah film thor"));
-        FilmRecyclerAdapter adapter = new FilmRecyclerAdapter(getApplicationContext(), filmList);
-        rvFilm.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        rvFilm.setAdapter(adapter);
     }
 
     public void scheduleJob(View view) {
@@ -81,5 +72,4 @@ public class HomeScreenActivity extends AppCompatActivity {
         Log.i(TAG, "scheduleJob: Cancel");
 
     }
-
 }

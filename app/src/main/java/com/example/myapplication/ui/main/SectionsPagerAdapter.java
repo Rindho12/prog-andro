@@ -33,7 +33,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return ServiceFragment.newInstance(mContext);
             case 1:
-                return RecycleViewFragment.newInstance();
+                return RecycleViewFragment.newInstance(mContext);
             default:
                 return null;
         }
