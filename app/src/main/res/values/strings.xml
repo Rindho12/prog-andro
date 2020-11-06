@@ -14,7 +14,12 @@
     <string name="sign_in">sign in</string>
     <string name="home_activity_nich">Home Activity nich</string>
     <string name="title_activity_home_screen">HomeScreenActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Service</string>
+    <string name="tab_text_2">Recycle View</string>
     <string name="channel_name">Notif Reciever</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mulai_service_tugas_6">Mulai service tugas 6</string>
+    <string name="mulai">Mulai</string>
+    <string name="cancel">Cancel</string>
 </resources>
