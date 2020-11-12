@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
@@ -15,8 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -26,21 +26,28 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.HomeScreenActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.login.LoginViewModel;
 import com.example.myapplication.ui.login.LoginViewModelFactory;
 import com.example.myapplication.utils.MyBroadcastReceiver;
 
-import java.security.AccessController;
-
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    SharedPreferences session;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        session = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(!session.getString("displayName", "").isEmpty() && !session.getString("username", "").isEmpty()) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
+            return;
+        }
 
         BroadcastReceiver newBroadcastReceiver = new MyBroadcastReceiver();
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.EXTRA_NO_CONNECTIVITY);
@@ -52,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
+        final Button registerButton = findViewById(R.id.registerMenu);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
@@ -65,24 +73,16 @@ public class LoginActivity extends AppCompatActivity {
                     showLoginFailed(loginResult.getError());
                 }
                 if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
                     setResult(Activity.RESULT_OK);
+                    SharedPreferences.Editor editor = session.edit();
+                    editor.clear();
+                    editor.putString("displayName", loginResult.getSuccess().getDisplayName());
+                    editor.putString("username", loginResult.getSuccess().getUsername());
+                    editor.apply();
                     finish();
-                    Intent intent = new Intent(LoginActivity.this, com.example.myapplication.HomeScreenActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
                     startActivity(intent);
                 }
-            }
-        });
-
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
-                }
-                return false;
             }
         });
 
@@ -90,13 +90,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
+                loginViewModel.login(getApplicationContext(), usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
         });
-    }
 
-    private void updateUiWithUser(LoggedInUserView model) {
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {

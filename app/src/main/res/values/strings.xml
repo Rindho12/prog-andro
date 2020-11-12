@@ -2,7 +2,7 @@
     <string name="app_name">Prog Andro 2020</string>
     <string name="tugas_branching">Tugas Branching</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
+    <string name="prompt_email">Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -11,15 +11,16 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">Username atau Password Anda tidak benar</string>
     <string name="login">Login</string>
-    <string name="sign_in">sign in</string>
+    <string name="sign_in">Login</string>
+    <string name="sign_up">Daftar</string>
     <string name="home_activity_nich">Home Activity nich</string>
     <string name="title_activity_home_screen">HomeScreenActivity</string>
     <string name="tab_text_1">Service</string>
     <string name="tab_text_2">Recycle View</string>
     <string name="channel_name">Notif Reciever</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mulai_service_tugas_6">Mulai service tugas 6</string>
     <string name="mulai">Mulai</string>
     <string name="cancel">Cancel</string>
+    <string name="title_activity_register">RegisterActivity</string>
 </resources>

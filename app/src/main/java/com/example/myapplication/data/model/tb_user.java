@@ -1,18 +1,24 @@
 package com.example.myapplication.data.model;
 
-/**
- * Data class that captures user information for logged in users retrieved from LoginRepository
- */
-public class LoggedInUser {
+public class tb_user {
 
     private int userId;
     private String displayName;
     private String username;
+    private String password;
 
-    public LoggedInUser(int userId, String displayName, String username) {
+    public tb_user() {
+        this.userId = 0;
+        this.displayName = "";
+        this.username = "";
+        this.password = "";
+    }
+
+    public tb_user(int userId, String displayName, String username, String password) {
         this.userId = userId;
         this.displayName = displayName;
         this.username = username;
+        this.password = password;
     }
 
     public int getUserId() {
@@ -37,5 +43,13 @@ public class LoggedInUser {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

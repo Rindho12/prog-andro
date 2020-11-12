@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import android.content.Context;
 import android.util.Patterns;
 
 import com.example.myapplication.data.LoginRepository;
@@ -29,17 +30,12 @@ public class LoginViewModel extends ViewModel {
         return loginResult;
     }
 
-    public void login(String username, String password) {
+    public void login(Context context, String username, String password) {
         // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
-
+        Result<LoggedInUser> result = loginRepository.login(context, username, password);
         if (result instanceof Result.Success) {
-            if(username.equals("admin") && password.equals("admin")) {
-                LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-                loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
-            } else {
-                loginResult.setValue(new LoginResult(R.string.login_failed));
-            }
+            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
+            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName(), username)));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
         }
@@ -60,9 +56,6 @@ public class LoginViewModel extends ViewModel {
         if (username == null) {
             return false;
         }
-        if (!username.equals("admin")) {
-            return false;
-        }
         username.trim();
         return true;
     }
@@ -70,9 +63,6 @@ public class LoginViewModel extends ViewModel {
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
         if (password == null) {
-            return false;
-        }
-        if (!password.equals("admin")) {
             return false;
         }
         password.trim();
