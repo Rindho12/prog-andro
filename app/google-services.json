@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "115212372744",
+    "firebase_url": "https://prog-andro-e228d.firebaseio.com",
+    "project_id": "prog-andro-e228d",
+    "storage_bucket": "prog-andro-e228d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115212372744:android:c32f3502376f125ea87abd",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115212372744-2q3tvj5usvlnu61107q8f22u2cgg8ma3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9SX6fLWR9-SXgYR2lvJWVEPuLxYx9Ef8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115212372744-2q3tvj5usvlnu61107q8f22u2cgg8ma3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.myapplication.mahasiswa.MahasiswaActivity;
 import com.example.myapplication.service.MyJobService;
 import com.example.myapplication.ui.login.LoginActivity;
 import com.example.myapplication.utils.MyBroadcastReceiver;
@@ -91,5 +92,10 @@ public class HomeScreenActivity extends AppCompatActivity {
         scheduler.cancel(123);
         Log.i(TAG, "scheduleJob: Cancel");
 
+    }
+
+    public void mahasiswaList(View view) {
+        Intent Intent = new Intent(getApplicationContext(), MahasiswaActivity.class);
+        startActivity(Intent);
     }
 }

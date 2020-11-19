@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Prog Andro 2020</string>
     <string name="tugas_branching">Tugas Branching</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">Prog Andro</string>
     <string name="prompt_email">Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -23,4 +23,6 @@
     <string name="mulai">Mulai</string>
     <string name="cancel">Cancel</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="mahasiswa">Mahasiswa</string>
+    <string name="tambah">Tambah</string>
 </resources>
