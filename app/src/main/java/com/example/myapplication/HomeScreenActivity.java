@@ -4,6 +4,7 @@ import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -77,7 +78,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                 .setOverrideDeadline(3*1000)
                 .build();
 
-        JobScheduler scheduler = (JobScheduler) getSystemService(JobScheduler.class);
+        JobScheduler scheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
         int resultCode = scheduler.schedule(info);
         if(resultCode == JobScheduler.RESULT_SUCCESS) {
             Log.i(TAG, "scheduleJob: Success");
@@ -88,7 +89,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void cancelJob(View view) {
-        JobScheduler scheduler = (JobScheduler) getSystemService(JobScheduler.class);
+        JobScheduler scheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
         scheduler.cancel(123);
         Log.i(TAG, "scheduleJob: Cancel");
 
@@ -96,6 +97,11 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     public void mahasiswaList(View view) {
         Intent Intent = new Intent(getApplicationContext(), MahasiswaActivity.class);
+        startActivity(Intent);
+    }
+
+    public void tugasSembilan(View view) {
+        Intent Intent = new Intent(getApplicationContext(), Tugas9Activity.class);
         startActivity(Intent);
     }
 }

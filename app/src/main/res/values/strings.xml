@@ -25,4 +25,6 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="mahasiswa">Mahasiswa</string>
     <string name="tambah">Tambah</string>
+    <string name="button_tugas_9">Button Tugas 9</string>
+    <string name="take_photo">Take Photo</string>
 </resources>
